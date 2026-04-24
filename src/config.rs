@@ -118,7 +118,7 @@ impl ClusterToken {
 }
 
 fn build_kube_uri(host: &str, port: u16) -> Result<Uri, KubeError> {
-    let uri = Uri::builder().scheme("https");
+    let uri = Uri::builder().scheme("https").path_and_query("");
     let uri = match host.parse::<net::IpAddr>() {
         Ok(ip) => {
             if port == 443 {
