@@ -1,6 +1,6 @@
 //!Minimal data model to allow extraction of only useful information (for the purposes of this crate)
 
-#[derive(serde_derive::Deserialize)]
+#[derive(Debug, serde_derive::Deserialize)]
 ///Common metadata for kubernetes objects
 pub struct Metadata {
     ///Name of the pod within namespace
@@ -15,7 +15,7 @@ pub struct Metadata {
     pub uid: String,
 }
 
-#[derive(serde_derive::Deserialize)]
+#[derive(Debug, serde_derive::Deserialize)]
 ///Container object definition
 pub struct Container {
     ///Name of the container
@@ -24,7 +24,7 @@ pub struct Container {
     pub image: String,
 }
 
-#[derive(Default, serde_derive::Deserialize)]
+#[derive(Debug, Default, serde_derive::Deserialize)]
 ///Pod spec
 pub struct PodSpec {
     #[serde(default)]
@@ -32,7 +32,7 @@ pub struct PodSpec {
     pub containers: Vec<Container>,
 }
 
-#[derive(serde_derive::Deserialize)]
+#[derive(Debug, serde_derive::Deserialize)]
 ///Container object definition
 pub struct ContainerStatus {
     ///Unique identifier of the container
@@ -59,7 +59,7 @@ impl ContainerStatus {
     }
 }
 
-#[derive(Default, serde_derive::Deserialize)]
+#[derive(Debug, Default, serde_derive::Deserialize)]
 ///Pod status
 pub struct PodStatus {
     #[serde(default)]
@@ -67,7 +67,7 @@ pub struct PodStatus {
     pub container_statuses: Vec<ContainerStatus>,
 }
 
-#[derive(serde_derive::Deserialize)]
+#[derive(Debug, serde_derive::Deserialize)]
 ///Pod object definition
 pub struct Pod {
     ///Pod metadata
